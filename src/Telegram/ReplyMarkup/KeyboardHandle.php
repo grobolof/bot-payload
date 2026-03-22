@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace BotMapperFormatter\ReplyMarkup;
+namespace BotMapperFormatter\Telegram\ReplyMarkup;
 
-use BotMapperFormatter\ReplyMarkup\Model\Keyboard\Keyboard;
-use BotMapperFormatter\ReplyMarkup\Model\Keyboard\KeyboardInline;
-use BotMapperFormatter\ReplyMarkup\Model\Keyboard\KeyboardRemove;
-use BotMapperFormatter\ReplyMarkup\Model\ReplyMarkup;
+use BotMapperFormatter\Telegram\ReplyMarkup\Model\Keyboard\Keyboard;
+use BotMapperFormatter\Telegram\ReplyMarkup\Model\Keyboard\KeyboardInline;
+use BotMapperFormatter\Telegram\ReplyMarkup\Model\Keyboard\KeyboardRemove;
+use BotMapperFormatter\Telegram\ReplyMarkup\Model\ReplyMarkup;
 
 readonly class KeyboardHandle
 {

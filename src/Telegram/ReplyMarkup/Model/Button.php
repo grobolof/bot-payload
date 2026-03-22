@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace BotMapperFormatter\ReplyMarkup\Model;
+namespace BotMapperFormatter\Telegram\ReplyMarkup\Model;
 
-use BotMapperFormatter\ReplyMarkup\Exception\PositiveIntException;
+use BotMapperFormatter\Telegram\ReplyMarkup\Exception\PositiveIntException;
 
 /**
  * Модель кнопки Telegram клавиатуры

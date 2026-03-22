@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace BotMapperFormatter\ReplyMarkup\Exception;
+namespace BotMapperFormatter\Telegram\ReplyMarkup\Exception;
 
 class PositiveIntException extends \InvalidArgumentException
 {

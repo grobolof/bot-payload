@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace BotMapperFormatter\Message\Enum;
+namespace BotMapperFormatter\Telegram\Message\Enum;
 
 enum Mod: string
 {

@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace BotMapperFormatter;
+namespace BotMapperFormatter\Telegram;
 
-use BotMapperFormatter\Message\Enum\Mod;
-use BotMapperFormatter\Message\Mod\MarkdownV2;
-use BotMapperFormatter\ReplyMarkup\KeyboardHandle;
-use BotMapperFormatter\ReplyMarkup\Model\Keyboard\KeyboardInline;
-use BotMapperFormatter\ReplyMarkup\Model\Keyboard\Keyboard;
-use BotMapperFormatter\ReplyMarkup\Model\Keyboard\KeyboardRemove;
-use BotMapperFormatter\ReplyMarkup\Model\ReplyMarkup;
+use BotMapperFormatter\Telegram\Message\Enum\Mod;
+use BotMapperFormatter\Telegram\Message\Mod\MarkdownV2;
+use BotMapperFormatter\Telegram\ReplyMarkup\KeyboardHandle;
+use BotMapperFormatter\Telegram\ReplyMarkup\Model\Keyboard\Keyboard;
+use BotMapperFormatter\Telegram\ReplyMarkup\Model\Keyboard\KeyboardInline;
+use BotMapperFormatter\Telegram\ReplyMarkup\Model\Keyboard\KeyboardRemove;
+use BotMapperFormatter\Telegram\ReplyMarkup\Model\ReplyMarkup;
 
-readonly class Formatter
+readonly class TelegramFormatter
 {
     public static function message(Mod $mod, string $text): string
     {

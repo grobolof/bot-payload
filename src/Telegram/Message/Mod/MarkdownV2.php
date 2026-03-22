@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace BotMapperFormatter\Message\Mod;
+namespace BotMapperFormatter\Telegram\Message\Mod;
 
-use BotMapperFormatter\Message\Enum\Marker;
-use BotMapperFormatter\Message\Exception\TagsMismatchException;
+use BotMapperFormatter\Telegram\Message\Enum\Marker;
+use BotMapperFormatter\Telegram\Message\Exception\TagsMismatchException;
 
 readonly class MarkdownV2
 {

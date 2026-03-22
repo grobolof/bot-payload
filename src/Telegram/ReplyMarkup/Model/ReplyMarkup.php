@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace BotMapperFormatter\ReplyMarkup\Model;
+namespace BotMapperFormatter\Telegram\ReplyMarkup\Model;
 
-use BotMapperFormatter\ReplyMarkup\Contract\KeyboardInterface;
+use BotMapperFormatter\Telegram\ReplyMarkup\Contract\KeyboardInterface;
 
 /**
  * Модель Telegram клавиатуры
