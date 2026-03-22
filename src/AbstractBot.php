@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace BotMapperFormatter;
 
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\PropertyAccess\PropertyAccessor;
 use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;

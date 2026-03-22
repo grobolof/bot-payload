@@ -5,11 +5,9 @@ declare(strict_types=1);
 namespace BotMapperFormatter\VK\Mapper;
 
 use BotMapperFormatter\AbstractBot;
-use BotMapperFormatter\VK\ExceptionInterface;
 use BotMapperFormatter\VK\Mapper\Contract\VKMapperInterface;
 use BotMapperFormatter\VK\Mapper\Enum\VKMapperMessageTypeEnum;
-use BotMapperFormatter\VK\MessageModel;
-use BotMapperFormatter\VK\VkMessageTypeEnum;
+use BotMapperFormatter\VK\Mapper\Model\MessageModel;
 
 readonly class VKMapper extends AbstractBot
 {
@@ -20,7 +18,7 @@ readonly class VKMapper extends AbstractBot
         }
 
         return match (VKMapperMessageTypeEnum::tryFrom($data['type'] ?? '')) {
-            VkMessageTypeEnum::MESSAGE_NEW => self::messageNewType(data: $data),
+            VKMapperMessageTypeEnum::MESSAGE_NEW => self::messageNewType(data: $data),
             default => null,
         };
     }
