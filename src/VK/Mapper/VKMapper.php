@@ -7,7 +7,7 @@ namespace BotMapperFormatter\VK\Mapper;
 use BotMapperFormatter\AbstractBot;
 use BotMapperFormatter\VK\Mapper\Contract\VKMapperInterface;
 use BotMapperFormatter\VK\Mapper\Enum\VKMapperMessageTypeEnum;
-use BotMapperFormatter\VK\Mapper\Model\NewMessage;
+use BotMapperFormatter\VK\Mapper\Model\MessageNew;
 
 readonly class VKMapper extends AbstractBot
 {
@@ -18,14 +18,14 @@ readonly class VKMapper extends AbstractBot
         }
 
         return match (VKMapperMessageTypeEnum::tryFrom($data['type'] ?? '')) {
-            VKMapperMessageTypeEnum::MESSAGE_NEW => self::messageNewType(data: $data),
+            VKMapperMessageTypeEnum::MESSAGE_NEW => self::messageNew(data: $data),
             default => null,
         };
     }
 
-    private static function messageNewType(array $data): NewMessage
+    private static function messageNew(array $data): MessageNew
     {
-        // Форматировать json: self::serializer()->deserialize($data, NewMessage::class, 'json');
-        return self::serializer()->denormalize(data: $data, type: NewMessage::class);
+        // Форматировать json: self::serializer()->deserialize($data, MessageNew::class, 'json');
+        return self::serializer()->denormalize(data: $data, type: MessageNew::class);
     }
 }

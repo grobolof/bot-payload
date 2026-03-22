@@ -8,7 +8,7 @@ use BotMapperFormatter\VK\Mapper\Contract\VKMapperInterface;
 use BotMapperFormatter\VK\Mapper\Model\Attachment\AttachmentObject;
 use Symfony\Component\Serializer\Attribute\SerializedName;
 
-readonly class NewMessage implements VKMapperInterface
+readonly class MessageNew implements VKMapperInterface
 {
     public function __construct(
         #[SerializedName('group_id')]
