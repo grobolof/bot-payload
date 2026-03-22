@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace BotMapperFormatter\VK\Mapper\Model;
 
 use BotMapperFormatter\VK\Mapper\Contract\VKMapperInterface;
-use BotMapperFormatter\VK\Mapper\Model\Field\FieldObjectModel;
+use BotMapperFormatter\VK\Mapper\Model\Attachment\AttachmentObject;
 use Symfony\Component\Serializer\Attribute\SerializedName;
 
-readonly class MessageModel implements VKMapperInterface
+readonly class NewMessage implements VKMapperInterface
 {
     public function __construct(
         #[SerializedName('group_id')]
@@ -18,7 +18,7 @@ readonly class MessageModel implements VKMapperInterface
         private string $eventId,
         #[SerializedName('v')]
         private string $version,
-        private FieldObjectModel $object,
+        private AttachmentObject $object,
         private ?string $secret = null,
     ) {
     }
@@ -43,7 +43,7 @@ readonly class MessageModel implements VKMapperInterface
         return $this->version;
     }
 
-    public function getObject(): FieldObjectModel
+    public function getObject(): AttachmentObject
     {
         return $this->object;
     }

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace BotMapperFormatter\VK\Mapper\Model\Field;
+namespace BotMapperFormatter\VK\Mapper\Model\Attachment;
 
 use Symfony\Component\Serializer\Attribute\SerializedName;
 
-readonly class FieldClientInfoModel
+readonly class AttachmentClientInfo
 {
     public function __construct(
         private bool $keyboard,
