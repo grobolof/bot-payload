@@ -11,7 +11,7 @@ use BotMapperFormatter\VK\Mapper\Model\NewMessage;
 
 readonly class VKMapper extends AbstractBot
 {
-    public static function map(array|string $data): ?VKMapperInterface
+    public static function exec(array|string $data): ?VKMapperInterface
     {
         if (is_string($data)) {
             $data = json_decode($data, true);
@@ -23,13 +23,9 @@ readonly class VKMapper extends AbstractBot
         };
     }
 
-    /**
-     * @throws ExceptionInterface
-     */
     private static function messageNewType(array $data): NewMessage
     {
-//        return self::serializer()->deserialize($data, NewMessage::class, 'json');
-
+        // Форматировать json: self::serializer()->deserialize($data, NewMessage::class, 'json');
         return self::serializer()->denormalize(data: $data, type: NewMessage::class);
     }
 }
