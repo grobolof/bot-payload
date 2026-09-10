@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace BotMapperFormatter\Tests\VK;
+namespace BotPayload\Tests\VK;
 
-use BotMapperFormatter\Exception\InvalidPayloadException;
-use BotMapperFormatter\VK\Mapper\Model\Confirmation;
-use BotMapperFormatter\VK\Mapper\Model\MessageEvent;
-use BotMapperFormatter\VK\Mapper\Model\MessageNew;
-use BotMapperFormatter\VK\Mapper\VKMapper;
+use BotPayload\Exception\InvalidPayloadException;
+use BotPayload\VK\Mapper\Model\Confirmation;
+use BotPayload\VK\Mapper\Model\MessageEvent;
+use BotPayload\VK\Mapper\Model\MessageNew;
+use BotPayload\VK\Mapper\VKMapper;
 use PHPUnit\Framework\TestCase;
 
 final class VKMapperTest extends TestCase

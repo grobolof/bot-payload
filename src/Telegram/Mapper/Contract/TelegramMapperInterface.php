@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace BotMapperFormatter\Telegram\Mapper\Contract;
+namespace BotPayload\Telegram\Mapper\Contract;
 
 interface TelegramMapperInterface
 {

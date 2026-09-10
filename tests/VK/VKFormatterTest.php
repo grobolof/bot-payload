@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace BotMapperFormatter\Tests\VK;
+namespace BotPayload\Tests\VK;
 
-use BotMapperFormatter\VK\Formatter\Enum\ButtonColor;
-use BotMapperFormatter\VK\Formatter\Enum\ButtonType;
-use BotMapperFormatter\VK\Formatter\Model\Button;
-use BotMapperFormatter\VK\Formatter\Model\Keyboard;
-use BotMapperFormatter\VK\Formatter\Model\ReplyMarkup;
-use BotMapperFormatter\VK\Formatter\VKFormatter;
+use BotPayload\VK\Formatter\Enum\ButtonColor;
+use BotPayload\VK\Formatter\Enum\ButtonType;
+use BotPayload\VK\Formatter\Model\Button;
+use BotPayload\VK\Formatter\Model\Keyboard;
+use BotPayload\VK\Formatter\Model\ReplyMarkup;
+use BotPayload\VK\Formatter\VKFormatter;
 use PHPUnit\Framework\TestCase;
 
 final class VKFormatterTest extends TestCase

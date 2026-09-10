@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace BotMapperFormatter\Telegram;
+namespace BotPayload\Telegram;
 
-use BotMapperFormatter\Telegram\Message\Enum\Mod;
-use BotMapperFormatter\Telegram\Message\Mod\MarkdownV2;
-use BotMapperFormatter\Telegram\ReplyMarkup\KeyboardHandle;
-use BotMapperFormatter\Telegram\ReplyMarkup\Model\Keyboard\Keyboard;
-use BotMapperFormatter\Telegram\ReplyMarkup\Model\Keyboard\KeyboardInline;
-use BotMapperFormatter\Telegram\ReplyMarkup\Model\Keyboard\KeyboardRemove;
-use BotMapperFormatter\Telegram\ReplyMarkup\Model\ReplyMarkup;
+use BotPayload\Telegram\Message\Enum\Mod;
+use BotPayload\Telegram\Message\Mod\MarkdownV2;
+use BotPayload\Telegram\ReplyMarkup\KeyboardHandle;
+use BotPayload\Telegram\ReplyMarkup\Model\Keyboard\Keyboard;
+use BotPayload\Telegram\ReplyMarkup\Model\Keyboard\KeyboardInline;
+use BotPayload\Telegram\ReplyMarkup\Model\Keyboard\KeyboardRemove;
+use BotPayload\Telegram\ReplyMarkup\Model\ReplyMarkup;
 
 class TelegramFormatter
 {

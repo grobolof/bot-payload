@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace BotMapperFormatter\VK\Formatter\Model;
+namespace BotPayload\VK\Formatter\Model;
 
 readonly class ReplyMarkup
 {

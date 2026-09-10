@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace BotMapperFormatter\VK\Mapper\Contract;
+namespace BotPayload\VK\Mapper\Contract;
 
 interface VKMapperInterface
 {

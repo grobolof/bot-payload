@@ -1,13 +1,15 @@
 {
-  "name": "grobolof/bot-mapper-formatter",
+  "name": "grobolof/bot-payload",
   "type": "library",
   "description": "Hydration of Telegram and VK bot webhooks and formatting of outgoing messages and keyboards",
   "keywords": [
     "telegram",
     "vk",
+    "bot",
+    "payload",
+    "webhook",
     "mapper",
-    "formatter",
-    "bot"
+    "formatter"
   ],
   "license": "MIT",
   "minimum-stability": "stable",
@@ -23,12 +25,12 @@
   },
   "autoload": {
     "psr-4": {
-      "BotMapperFormatter\\": "src/"
+      "BotPayload\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "BotMapperFormatter\\Tests\\": "tests/"
+      "BotPayload\\Tests\\": "tests/"
     }
   },
   "scripts": {

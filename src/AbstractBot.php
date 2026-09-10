@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace BotMapperFormatter;
+namespace BotPayload;
 
-use BotMapperFormatter\Exception\InvalidPayloadException;
+use BotPayload\Exception\InvalidPayloadException;
 use Symfony\Component\PropertyAccess\PropertyAccessor;
 use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;

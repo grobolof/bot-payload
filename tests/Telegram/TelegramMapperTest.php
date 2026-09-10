@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace BotMapperFormatter\Tests\Telegram;
+namespace BotPayload\Tests\Telegram;
 
-use BotMapperFormatter\Exception\InvalidPayloadException;
-use BotMapperFormatter\Telegram\Mapper\Model\TelegramUpdate;
-use BotMapperFormatter\Telegram\Mapper\TelegramMapper;
+use BotPayload\Exception\InvalidPayloadException;
+use BotPayload\Telegram\Mapper\Model\TelegramUpdate;
+use BotPayload\Telegram\Mapper\TelegramMapper;
 use PHPUnit\Framework\TestCase;
 
 final class TelegramMapperTest extends TestCase

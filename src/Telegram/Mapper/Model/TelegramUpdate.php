@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace BotMapperFormatter\Telegram\Mapper\Model;
+namespace BotPayload\Telegram\Mapper\Model;
 
-use BotMapperFormatter\Telegram\Mapper\Contract\TelegramMapperInterface;
+use BotPayload\Telegram\Mapper\Contract\TelegramMapperInterface;
 
 readonly class TelegramUpdate implements TelegramMapperInterface
 {
