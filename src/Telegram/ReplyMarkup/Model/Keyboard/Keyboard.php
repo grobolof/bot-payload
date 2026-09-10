@@ -8,11 +8,7 @@ use BotMapperFormatter\Telegram\ReplyMarkup\Contract\KeyboardInterface;
 use BotMapperFormatter\Telegram\ReplyMarkup\Exception\PositiveIntException;
 
 /**
- * Клавиатура внизу
- *
- * @property-read int|null $buttonsPerRow кол-во кнопок в ряду (имеет приоритет над рядами кнопок; опционально)
- * @property-read bool $resizeKeyboard масштабировать клавиатуру (опционально)
- * @property-read bool $oneTimeKeyboard клавиатуру "сворачивается" в нижнее меню (опционально)
+ * Reply-клавиатура внизу экрана (ReplyKeyboardMarkup).
  */
 readonly class Keyboard implements KeyboardInterface
 {
@@ -20,6 +16,9 @@ readonly class Keyboard implements KeyboardInterface
         private ?int $buttonsPerRow = null,
         private bool $resizeKeyboard = true,
         private bool $oneTimeKeyboard = true,
+        private bool $isPersistent = false,
+        private bool $selective = false,
+        private ?string $inputFieldPlaceholder = null,
     ) {
         if (is_int($buttonsPerRow) && $buttonsPerRow < 1) {
             throw new PositiveIntException(
@@ -42,5 +41,20 @@ readonly class Keyboard implements KeyboardInterface
     public function getOneTimeKeyboard(): bool
     {
         return $this->oneTimeKeyboard;
+    }
+
+    public function isPersistent(): bool
+    {
+        return $this->isPersistent;
+    }
+
+    public function isSelective(): bool
+    {
+        return $this->selective;
+    }
+
+    public function getInputFieldPlaceholder(): ?string
+    {
+        return $this->inputFieldPlaceholder;
     }
 }

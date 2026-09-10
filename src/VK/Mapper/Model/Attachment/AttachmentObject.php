@@ -4,17 +4,15 @@ declare(strict_types=1);
 
 namespace BotMapperFormatter\VK\Mapper\Model\Attachment;
 
-use Symfony\Component\Serializer\Attribute\SerializedName;
-
 readonly class AttachmentObject
 {
     public function __construct(
-        private AttachmentClientInfo $clientInfo,
         private AttachmentMessage $message,
+        private ?AttachmentClientInfo $clientInfo = null,
     ) {
     }
 
-    public function getClientInfo(): AttachmentClientInfo
+    public function getClientInfo(): ?AttachmentClientInfo
     {
         return $this->clientInfo;
     }

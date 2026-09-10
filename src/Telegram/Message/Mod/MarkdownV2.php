@@ -7,9 +7,14 @@ namespace BotMapperFormatter\Telegram\Message\Mod;
 use BotMapperFormatter\Telegram\Message\Enum\Marker;
 use BotMapperFormatter\Telegram\Message\Exception\TagsMismatchException;
 
-readonly class MarkdownV2
+class MarkdownV2
 {
-    private const CHARACTERS = '.,?_!~()[]-=*"|+';
+    /**
+     * Characters that must be escaped in MarkdownV2 outside markup entities.
+     *
+     * @see https://core.telegram.org/bots/api#markdownv2-style
+     */
+    private const CHARACTERS = '_*[]()~`>#+-=|{}.!\\';
 
     public static function handle(string $text): string
     {
@@ -17,8 +22,7 @@ readonly class MarkdownV2
 
         $markers = Marker::toArray();
 
-        // Убираем 2 и более пробелов между текстом
-        $text = preg_replace('/\s+/u', ' ', $text);
+        $text = preg_replace('/[^\S\n]+/u', ' ', $text) ?? $text;
 
         $tmpMarkers = [];
 
@@ -42,20 +46,19 @@ readonly class MarkdownV2
             );
         }
 
-        // Убираем все пробелы после символов "\n" (разрыв строки)
-        return preg_replace(pattern: '/(\n+)[ \t]+/', replacement: '$1', subject: $text);
+        return preg_replace(pattern: '/(\n+)[ \t]+/', replacement: '$1', subject: $text) ?? $text;
     }
 
     private static function markerToSymbol(Marker $marker): string
     {
         return match ($marker) {
             Marker::MARKER_LINEFEED => "\n",
-            Marker::MARKER_FONT_BOLD_OPEN, Marker::MARKER_FONT_BOLD_CLOSE => "*",
-            Marker::MARKER_URL_TEXT_OPEN => "[",
-            Marker::MARKER_URL_TEXT_CLOSE => "]",
-            Marker::MARKER_URL_LINK_OPEN => "(",
-            Marker::MARKER_URL_LINK_CLOSE => ")",
-            Marker::MARKER_LOWERCASE_CODE_OPEN, Marker::MARKER_LOWERCASE_CODE_CLOSE => "`",
+            Marker::MARKER_FONT_BOLD_OPEN, Marker::MARKER_FONT_BOLD_CLOSE => '*',
+            Marker::MARKER_URL_TEXT_OPEN => '[',
+            Marker::MARKER_URL_TEXT_CLOSE => ']',
+            Marker::MARKER_URL_LINK_OPEN => '(',
+            Marker::MARKER_URL_LINK_CLOSE => ')',
+            Marker::MARKER_LOWERCASE_CODE_OPEN, Marker::MARKER_LOWERCASE_CODE_CLOSE => '`',
         };
     }
 
@@ -64,20 +67,20 @@ readonly class MarkdownV2
         $markers = [
             [
                 Marker::MARKER_FONT_BOLD_OPEN->value,
-                Marker::MARKER_FONT_BOLD_CLOSE->value
+                Marker::MARKER_FONT_BOLD_CLOSE->value,
             ],
             [
                 Marker::MARKER_URL_TEXT_OPEN->value,
-                Marker::MARKER_URL_TEXT_CLOSE->value
+                Marker::MARKER_URL_TEXT_CLOSE->value,
             ],
             [
                 Marker::MARKER_URL_LINK_OPEN->value,
-                Marker::MARKER_URL_LINK_CLOSE->value
+                Marker::MARKER_URL_LINK_CLOSE->value,
             ],
             [
                 Marker::MARKER_LOWERCASE_CODE_OPEN->value,
-                Marker::MARKER_LOWERCASE_CODE_CLOSE->value
-            ]
+                Marker::MARKER_LOWERCASE_CODE_CLOSE->value,
+            ],
         ];
 
         foreach ($markers as $marker) {

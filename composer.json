@@ -1,25 +1,37 @@
 {
-  "name": "armhaina/bot-mapper-formatter",
+  "name": "grobolof/bot-mapper-formatter",
   "type": "library",
-  "description": "Telegram message formatter library",
+  "description": "Hydration of Telegram and VK bot webhooks and formatting of outgoing messages and keyboards",
   "keywords": [
     "telegram",
     "vk",
     "mapper",
-    "formatter"
+    "formatter",
+    "bot"
   ],
   "license": "MIT",
   "minimum-stability": "stable",
   "prefer-stable": true,
   "require": {
     "php": "^8.2",
-    "symfony/serializer": "8.0.*",
-    "symfony/property-info": "8.0.*",
-    "symfony/property-access": "8.0.*"
+    "symfony/property-access": "^6.4 || ^7.4 || ^8.0",
+    "symfony/property-info": "^6.4 || ^7.4 || ^8.0",
+    "symfony/serializer": "^6.4 || ^7.4 || ^8.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^11.5"
   },
   "autoload": {
     "psr-4": {
       "BotMapperFormatter\\": "src/"
     }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "BotMapperFormatter\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "test": "phpunit"
   }
 }

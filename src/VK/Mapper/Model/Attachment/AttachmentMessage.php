@@ -4,31 +4,37 @@ declare(strict_types=1);
 
 namespace BotMapperFormatter\VK\Mapper\Model\Attachment;
 
-use Symfony\Component\Serializer\Attribute\SerializedName;
-
 readonly class AttachmentMessage
 {
+    /**
+     * @param list<array<string, mixed>> $fwdMessages
+     * @param list<array<string, mixed>> $attachments
+     * @param array<string, mixed>|null $replyMessage
+     * @param array<string, mixed>|null $geo
+     * @param array<string, mixed>|null $action
+     * @param array<string, mixed>|null $keyboard
+     */
     public function __construct(
         private int $date,
-        #[SerializedName('from_id')]
         private int $fromId,
         private int $id,
-        private int $version,
-        private int $out,
-        #[SerializedName('fwd_messages')]
-        private array $fwdMessages,
-        private bool $important,
-        #[SerializedName('is_hidden')]
-        private bool $isHidden,
-        private array $attachments,
-        #[SerializedName('conversation_message_id')]
-        private int $conversationMessageId,
-        private string $text,
-        #[SerializedName('peer_id')]
         private int $peerId,
-        #[SerializedName('random_id')]
-        private int $randomId,
+        private int $out = 0,
+        private array $fwdMessages = [],
+        private bool $important = false,
+        private bool $isHidden = false,
+        private array $attachments = [],
+        private int $conversationMessageId = 0,
+        private string $text = '',
+        private int $randomId = 0,
+        private ?int $version = null,
         private ?string $payload = null,
+        private ?array $replyMessage = null,
+        private ?array $geo = null,
+        private ?array $action = null,
+        private ?array $keyboard = null,
+        private ?string $ref = null,
+        private ?string $refSource = null,
     ) {
     }
 
@@ -47,7 +53,7 @@ readonly class AttachmentMessage
         return $this->id;
     }
 
-    public function getVersion(): int
+    public function getVersion(): ?int
     {
         return $this->version;
     }
@@ -57,6 +63,9 @@ readonly class AttachmentMessage
         return $this->out;
     }
 
+    /**
+     * @return list<array<string, mixed>>
+     */
     public function getFwdMessages(): array
     {
         return $this->fwdMessages;
@@ -72,6 +81,9 @@ readonly class AttachmentMessage
         return $this->isHidden;
     }
 
+    /**
+     * @return list<array<string, mixed>>
+     */
     public function getAttachments(): array
     {
         return $this->attachments;
@@ -97,12 +109,63 @@ readonly class AttachmentMessage
         return $this->randomId;
     }
 
-    public function getPayload(): ?array
+    public function getPayload(): mixed
     {
-        if (!empty($this->payload)) {
-            return json_decode(json: $this->payload, associative: true);
+        if ($this->payload === null || $this->payload === '') {
+            return null;
         }
 
-        return null;
+        try {
+            return json_decode($this->payload, true, 512, JSON_THROW_ON_ERROR);
+        } catch (\JsonException) {
+            return $this->payload;
+        }
+    }
+
+    public function getRawPayload(): ?string
+    {
+        return $this->payload;
+    }
+
+    /**
+     * @return array<string, mixed>|null
+     */
+    public function getReplyMessage(): ?array
+    {
+        return $this->replyMessage;
+    }
+
+    /**
+     * @return array<string, mixed>|null
+     */
+    public function getGeo(): ?array
+    {
+        return $this->geo;
+    }
+
+    /**
+     * @return array<string, mixed>|null
+     */
+    public function getAction(): ?array
+    {
+        return $this->action;
+    }
+
+    /**
+     * @return array<string, mixed>|null
+     */
+    public function getKeyboard(): ?array
+    {
+        return $this->keyboard;
+    }
+
+    public function getRef(): ?string
+    {
+        return $this->ref;
+    }
+
+    public function getRefSource(): ?string
+    {
+        return $this->refSource;
     }
 }
