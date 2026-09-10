@@ -7,13 +7,10 @@ namespace BotMapperFormatter\Telegram\ReplyMarkup\Model;
 use BotMapperFormatter\Telegram\ReplyMarkup\Exception\PositiveIntException;
 
 /**
- * Модель кнопки Telegram клавиатуры
+ * Кнопка Telegram-клавиатуры.
  *
- * @property-read string $name Текст кнопки (обязательный)
- * @property-read int $row Номер строки для кнопки (обязательный)
- * @property-read string|null $callbackData Данные для callback функции (опционально)
- * @property-read string|null $switchInlineQuery Запрос для inline-режима (опционально)
- * @property-read string|null $url URL для кнопки-ссылки (опционально)
+ * Reply-клавиатура использует text / requestContact / requestLocation.
+ * Inline-клавиатура использует callbackData / url / switchInlineQuery.
  */
 readonly class Button
 {
@@ -22,7 +19,9 @@ readonly class Button
         private int $row = 1,
         private ?string $callbackData = null,
         private ?string $switchInlineQuery = null,
-        private ?string $url = null
+        private ?string $url = null,
+        private bool $requestContact = false,
+        private bool $requestLocation = false,
     ) {
         if ($row < 1) {
             throw new PositiveIntException(
@@ -55,5 +54,15 @@ readonly class Button
     public function getUrl(): ?string
     {
         return $this->url;
+    }
+
+    public function getRequestContact(): bool
+    {
+        return $this->requestContact;
+    }
+
+    public function getRequestLocation(): bool
+    {
+        return $this->requestLocation;
     }
 }

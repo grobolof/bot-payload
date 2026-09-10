@@ -4,19 +4,17 @@ declare(strict_types=1);
 
 namespace BotMapperFormatter\VK\Mapper\Model\Attachment;
 
-use Symfony\Component\Serializer\Attribute\SerializedName;
-
 readonly class AttachmentClientInfo
 {
+    /**
+     * @param list<string> $buttonActions
+     */
     public function __construct(
         private bool $keyboard,
-        #[SerializedName('inline_keyboard')]
         private bool $inlineKeyboard,
         private bool $carousel,
-        #[SerializedName('lang_id')]
         private int $langId,
-        #[SerializedName('button_actions')]
-        private array $buttonActions,
+        private array $buttonActions = [],
     ) {
     }
 
@@ -40,6 +38,9 @@ readonly class AttachmentClientInfo
         return $this->langId;
     }
 
+    /**
+     * @return list<string>
+     */
     public function getButtonActions(): array
     {
         return $this->buttonActions;

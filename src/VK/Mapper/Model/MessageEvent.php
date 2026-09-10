@@ -5,15 +5,14 @@ declare(strict_types=1);
 namespace BotMapperFormatter\VK\Mapper\Model;
 
 use BotMapperFormatter\VK\Mapper\Contract\VKMapperInterface;
-use BotMapperFormatter\VK\Mapper\Model\Attachment\AttachmentObject;
 use Symfony\Component\Serializer\Attribute\SerializedName;
 
-readonly class MessageNew implements VKMapperInterface
+readonly class MessageEvent implements VKMapperInterface
 {
     public function __construct(
         private int $groupId,
         private string $type,
-        private AttachmentObject $object,
+        private MessageEventObject $object,
         private ?string $eventId = null,
         #[SerializedName('v')]
         private ?string $version = null,
@@ -41,7 +40,7 @@ readonly class MessageNew implements VKMapperInterface
         return $this->version;
     }
 
-    public function getObject(): AttachmentObject
+    public function getObject(): MessageEventObject
     {
         return $this->object;
     }
@@ -51,23 +50,23 @@ readonly class MessageNew implements VKMapperInterface
         return $this->secret;
     }
 
-    public function getText(): string
+    public function getUserId(): int
     {
-        return $this->object->getMessage()->getText();
+        return $this->object->getUserId();
     }
 
     public function getPeerId(): int
     {
-        return $this->object->getMessage()->getPeerId();
+        return $this->object->getPeerId();
     }
 
-    public function getFromId(): int
+    public function getCallbackEventId(): string
     {
-        return $this->object->getMessage()->getFromId();
+        return $this->object->getEventId();
     }
 
     public function getPayload(): mixed
     {
-        return $this->object->getMessage()->getPayload();
+        return $this->object->getPayload();
     }
 }

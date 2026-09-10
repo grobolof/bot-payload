@@ -7,26 +7,30 @@ namespace BotMapperFormatter\Telegram\ReplyMarkup\Model;
 use BotMapperFormatter\Telegram\ReplyMarkup\Contract\KeyboardInterface;
 
 /**
- * Модель Telegram клавиатуры
+ * Модель Telegram-клавиатуры.
  *
- * @property-read array $buttons массив кнопок (обязательный)
- * @property-read KeyboardInterface|null $keyboard клавиатура (опционально)
- * @property-read bool $isKeyboardRemove удалить клавиатуру (опционально)
+ * @param list<Button> $buttons
  */
 readonly class ReplyMarkup
 {
+    /**
+     * @param list<Button> $buttons
+     */
     public function __construct(
         private KeyboardInterface $keyboard,
         private array $buttons = [],
     ) {
     }
 
+    /**
+     * @return list<Button>
+     */
     public function getButtons(): array
     {
         return $this->buttons;
     }
 
-    public function getKeyboard(): ?KeyboardInterface
+    public function getKeyboard(): KeyboardInterface
     {
         return $this->keyboard;
     }

@@ -7,19 +7,23 @@ namespace BotMapperFormatter\Telegram\ReplyMarkup\Model\Keyboard;
 use BotMapperFormatter\Telegram\ReplyMarkup\Contract\KeyboardInterface;
 
 /**
- * Удалить клавиатуру
- *
- * @property-read bool $isKeyboardRemove флаг того надо ли удалить клавиатуру (опционально)
+ * Удалить reply-клавиатуру (ReplyKeyboardRemove).
  */
 readonly class KeyboardRemove implements KeyboardInterface
 {
     public function __construct(
-        private bool $isKeyboardRemove = false,
+        private bool $isKeyboardRemove = true,
+        private bool $selective = false,
     ) {
     }
 
     public function getIsKeyboardRemove(): bool
     {
         return $this->isKeyboardRemove;
+    }
+
+    public function isSelective(): bool
+    {
+        return $this->selective;
     }
 }
