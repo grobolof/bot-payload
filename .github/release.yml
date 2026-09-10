@@ -1,0 +1,11 @@
+changelog:
+  categories:
+    - title: Telegram
+      labels:
+        - telegram
+    - title: VK
+      labels:
+        - vk
+    - title: Прочее
+      labels:
+        - "*"
