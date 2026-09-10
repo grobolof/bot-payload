@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace BotMapperFormatter\VK\Formatter;
+namespace BotPayload\VK\Formatter;
 
-use BotMapperFormatter\VK\Formatter\Enum\ButtonType;
-use BotMapperFormatter\VK\Formatter\Model\Button;
-use BotMapperFormatter\VK\Formatter\Model\ReplyMarkup;
+use BotPayload\VK\Formatter\Enum\ButtonType;
+use BotPayload\VK\Formatter\Model\Button;
+use BotPayload\VK\Formatter\Model\ReplyMarkup;
 
 class VKFormatter
 {

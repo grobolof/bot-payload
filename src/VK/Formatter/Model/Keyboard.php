@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace BotMapperFormatter\VK\Formatter\Model;
+namespace BotPayload\VK\Formatter\Model;
 
-use BotMapperFormatter\Exception\PositiveIntException;
+use BotPayload\Exception\PositiveIntException;
 
 readonly class Keyboard
 {

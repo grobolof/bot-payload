@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace BotMapperFormatter\VK\Mapper\Model;
+namespace BotPayload\VK\Mapper\Model;
 
-use BotMapperFormatter\VK\Mapper\Contract\VKMapperInterface;
+use BotPayload\VK\Mapper\Contract\VKMapperInterface;
 
 readonly class Confirmation implements VKMapperInterface
 {

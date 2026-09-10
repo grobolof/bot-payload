@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace BotMapperFormatter\Exception;
+namespace BotPayload\Exception;
 
 class InvalidPayloadException extends \InvalidArgumentException
 {

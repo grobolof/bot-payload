@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace BotMapperFormatter\Telegram\Mapper;
+namespace BotPayload\Telegram\Mapper;
 
-use BotMapperFormatter\AbstractBot;
-use BotMapperFormatter\Telegram\Mapper\Model\TelegramUpdate;
+use BotPayload\AbstractBot;
+use BotPayload\Telegram\Mapper\Model\TelegramUpdate;
 
 class TelegramMapper extends AbstractBot
 {

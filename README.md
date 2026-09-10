@@ -1,4 +1,4 @@
-# bot-mapper-formatter
+# bot-payload
 
 PHP-библиотека для чат-ботов Telegram и VK.
 
@@ -14,7 +14,7 @@ PHP-библиотека для чат-ботов Telegram и VK.
 ## Установка
 
 ```bash
-composer require grobolof/bot-mapper-formatter
+composer require grobolof/bot-payload
 ```
 
 PHP `^8.2`, Symfony Serializer `^6.4 || ^7.4 || ^8.0`.
@@ -26,7 +26,7 @@ PHP `^8.2`, Symfony Serializer `^6.4 || ^7.4 || ^8.0`.
   "repositories": [
     {
       "type": "vcs",
-      "url": "git@github.com:grobolof/bot-mapper-formatter.git"
+      "url": "git@github.com:grobolof/bot-payload.git"
     }
   ]
 }
@@ -81,7 +81,7 @@ PHP `^8.2`, Symfony Serializer `^6.4 || ^7.4 || ^8.0`.
 ```
 
 ```php
-use BotMapperFormatter\Telegram\Mapper\TelegramMapper;
+use BotPayload\Telegram\Mapper\TelegramMapper;
 
 $update = TelegramMapper::exec($requestJson); // array|string
 
@@ -148,7 +148,7 @@ $update->getChatId();                               // 222
 
 После каждого `callback_query` Telegram ждёт `answerCallbackQuery`, иначе у пользователя крутится прогресс на кнопке.
 
-Некорректный JSON бросает `BotMapperFormatter\Exception\InvalidPayloadException`.
+Некорректный JSON бросает `BotPayload\Exception\InvalidPayloadException`.
 
 ### Что принимать в ответ (отправка в Telegram)
 
@@ -173,12 +173,12 @@ $update->getChatId();                               // 222
 | `message_thread_id` | int, топик форума | нет |
 
 ```php
-use BotMapperFormatter\Telegram\Message\Enum\Marker;
-use BotMapperFormatter\Telegram\Message\Enum\Mod;
-use BotMapperFormatter\Telegram\ReplyMarkup\Model\Button;
-use BotMapperFormatter\Telegram\ReplyMarkup\Model\Keyboard\KeyboardInline;
-use BotMapperFormatter\Telegram\ReplyMarkup\Model\ReplyMarkup;
-use BotMapperFormatter\Telegram\TelegramFormatter;
+use BotPayload\Telegram\Message\Enum\Marker;
+use BotPayload\Telegram\Message\Enum\Mod;
+use BotPayload\Telegram\ReplyMarkup\Model\Button;
+use BotPayload\Telegram\ReplyMarkup\Model\Keyboard\KeyboardInline;
+use BotPayload\Telegram\ReplyMarkup\Model\ReplyMarkup;
+use BotPayload\Telegram\TelegramFormatter;
 
 $payload = TelegramFormatter::sendMessage(
     chatId: $update->getChatId(),
@@ -232,7 +232,7 @@ TelegramFormatter::message(Mod::MARKDOWN_V2, $text);
 **1. Reply-клавиатура** — кнопки вместо системной клавиатуры. Нажатие присылает обычный `message` с текстом кнопки. У reply-кнопок **нет** `callback_data`.
 
 ```php
-use BotMapperFormatter\Telegram\ReplyMarkup\Model\Keyboard\Keyboard;
+use BotPayload\Telegram\ReplyMarkup\Model\Keyboard\Keyboard;
 
 new ReplyMarkup(
     keyboard: new Keyboard(buttonsPerRow: 2, resizeKeyboard: true, oneTimeKeyboard: true),
@@ -287,7 +287,7 @@ new ReplyMarkup(
 **3. Удалить reply-клавиатуру**
 
 ```php
-use BotMapperFormatter\Telegram\ReplyMarkup\Model\Keyboard\KeyboardRemove;
+use BotPayload\Telegram\ReplyMarkup\Model\Keyboard\KeyboardRemove;
 
 new ReplyMarkup(keyboard: new KeyboardRemove());
 // { "remove_keyboard": true }
@@ -341,8 +341,8 @@ Callback API / Bots Long Poll шлёт JSON:
 ```
 
 ```php
-use BotMapperFormatter\VK\Mapper\Model\Confirmation;
-use BotMapperFormatter\VK\Mapper\VKMapper;
+use BotPayload\VK\Mapper\Model\Confirmation;
+use BotPayload\VK\Mapper\VKMapper;
 
 $event = VKMapper::exec($requestJson);
 
@@ -392,7 +392,7 @@ if ($event instanceof Confirmation) {
 ```
 
 ```php
-use BotMapperFormatter\VK\Mapper\Model\MessageNew;
+use BotPayload\VK\Mapper\Model\MessageNew;
 
 $event = VKMapper::exec($requestJson);
 
@@ -434,7 +434,7 @@ if ($event instanceof MessageNew) {
 - `object.event_id` — одноразовый id нажатия (живёт ~1 минуту), его нужно отдать в `messages.sendMessageEventAnswer`.
 
 ```php
-use BotMapperFormatter\VK\Mapper\Model\MessageEvent;
+use BotPayload\VK\Mapper\Model\MessageEvent;
 
 if ($event instanceof MessageEvent) {
     $event->getCallbackEventId(); // c9e90aab7b38 → sendMessageEventAnswer
@@ -462,12 +462,12 @@ if ($event instanceof MessageEvent) {
 Плюс ваш `access_token` и `v`.
 
 ```php
-use BotMapperFormatter\VK\Formatter\Enum\ButtonColor;
-use BotMapperFormatter\VK\Formatter\Enum\ButtonType;
-use BotMapperFormatter\VK\Formatter\Model\Button;
-use BotMapperFormatter\VK\Formatter\Model\Keyboard;
-use BotMapperFormatter\VK\Formatter\Model\ReplyMarkup;
-use BotMapperFormatter\VK\Formatter\VKFormatter;
+use BotPayload\VK\Formatter\Enum\ButtonColor;
+use BotPayload\VK\Formatter\Enum\ButtonType;
+use BotPayload\VK\Formatter\Model\Button;
+use BotPayload\VK\Formatter\Model\Keyboard;
+use BotPayload\VK\Formatter\Model\ReplyMarkup;
+use BotPayload\VK\Formatter\VKFormatter;
 
 $payload = VKFormatter::sendMessage(
     peerId: $event->getPeerId(),

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace BotMapperFormatter\VK\Mapper\Model;
+namespace BotPayload\VK\Mapper\Model;
 
 readonly class MessageEventObject
 {

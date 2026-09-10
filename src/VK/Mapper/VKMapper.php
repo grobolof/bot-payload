@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace BotMapperFormatter\VK\Mapper;
+namespace BotPayload\VK\Mapper;
 
-use BotMapperFormatter\AbstractBot;
-use BotMapperFormatter\VK\Mapper\Contract\VKMapperInterface;
-use BotMapperFormatter\VK\Mapper\Enum\VKMapperMessageTypeEnum;
-use BotMapperFormatter\VK\Mapper\Model\Confirmation;
-use BotMapperFormatter\VK\Mapper\Model\MessageEvent;
-use BotMapperFormatter\VK\Mapper\Model\MessageNew;
+use BotPayload\AbstractBot;
+use BotPayload\VK\Mapper\Contract\VKMapperInterface;
+use BotPayload\VK\Mapper\Enum\VKMapperMessageTypeEnum;
+use BotPayload\VK\Mapper\Model\Confirmation;
+use BotPayload\VK\Mapper\Model\MessageEvent;
+use BotPayload\VK\Mapper\Model\MessageNew;
 
 class VKMapper extends AbstractBot
 {

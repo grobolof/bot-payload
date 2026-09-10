@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace BotMapperFormatter\VK\Mapper\Enum;
+namespace BotPayload\VK\Mapper\Enum;
 
 enum VKMapperMessageTypeEnum: string
 {

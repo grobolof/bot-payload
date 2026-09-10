@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace BotMapperFormatter\VK\Formatter\Model;
+namespace BotPayload\VK\Formatter\Model;
 
-use BotMapperFormatter\Exception\PositiveIntException;
-use BotMapperFormatter\VK\Formatter\Enum\ButtonColor;
-use BotMapperFormatter\VK\Formatter\Enum\ButtonType;
+use BotPayload\Exception\PositiveIntException;
+use BotPayload\VK\Formatter\Enum\ButtonColor;
+use BotPayload\VK\Formatter\Enum\ButtonType;
 
 readonly class Button
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace BotMapperFormatter\Telegram\ReplyMarkup\Contract;
+namespace BotPayload\Telegram\ReplyMarkup\Contract;
 
 interface KeyboardInterface
 {

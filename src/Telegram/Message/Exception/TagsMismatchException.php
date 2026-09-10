@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace BotMapperFormatter\Telegram\Message\Exception;
+namespace BotPayload\Telegram\Message\Exception;
 
 class TagsMismatchException extends \InvalidArgumentException
 {

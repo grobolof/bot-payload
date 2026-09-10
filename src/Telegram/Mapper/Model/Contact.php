@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace BotMapperFormatter\Telegram\Mapper\Model;
+namespace BotPayload\Telegram\Mapper\Model;
 
 readonly class Contact
 {

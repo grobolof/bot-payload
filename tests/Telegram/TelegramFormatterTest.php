@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace BotMapperFormatter\Tests\Telegram;
+namespace BotPayload\Tests\Telegram;
 
-use BotMapperFormatter\Telegram\Message\Enum\Marker;
-use BotMapperFormatter\Telegram\Message\Enum\Mod;
-use BotMapperFormatter\Telegram\Message\Exception\TagsMismatchException;
-use BotMapperFormatter\Telegram\ReplyMarkup\Model\Button;
-use BotMapperFormatter\Telegram\ReplyMarkup\Model\Keyboard\Keyboard;
-use BotMapperFormatter\Telegram\ReplyMarkup\Model\Keyboard\KeyboardInline;
-use BotMapperFormatter\Telegram\ReplyMarkup\Model\Keyboard\KeyboardRemove;
-use BotMapperFormatter\Telegram\ReplyMarkup\Model\ReplyMarkup;
-use BotMapperFormatter\Telegram\TelegramFormatter;
+use BotPayload\Telegram\Message\Enum\Marker;
+use BotPayload\Telegram\Message\Enum\Mod;
+use BotPayload\Telegram\Message\Exception\TagsMismatchException;
+use BotPayload\Telegram\ReplyMarkup\Model\Button;
+use BotPayload\Telegram\ReplyMarkup\Model\Keyboard\Keyboard;
+use BotPayload\Telegram\ReplyMarkup\Model\Keyboard\KeyboardInline;
+use BotPayload\Telegram\ReplyMarkup\Model\Keyboard\KeyboardRemove;
+use BotPayload\Telegram\ReplyMarkup\Model\ReplyMarkup;
+use BotPayload\Telegram\TelegramFormatter;
 use PHPUnit\Framework\TestCase;
 
 final class TelegramFormatterTest extends TestCase

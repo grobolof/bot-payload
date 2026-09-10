@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace BotMapperFormatter\Telegram\ReplyMarkup;
+namespace BotPayload\Telegram\ReplyMarkup;
 
-use BotMapperFormatter\Telegram\ReplyMarkup\Model\Button;
-use BotMapperFormatter\Telegram\ReplyMarkup\Model\Keyboard\Keyboard;
-use BotMapperFormatter\Telegram\ReplyMarkup\Model\Keyboard\KeyboardInline;
-use BotMapperFormatter\Telegram\ReplyMarkup\Model\Keyboard\KeyboardRemove;
-use BotMapperFormatter\Telegram\ReplyMarkup\Model\ReplyMarkup;
+use BotPayload\Telegram\ReplyMarkup\Model\Button;
+use BotPayload\Telegram\ReplyMarkup\Model\Keyboard\Keyboard;
+use BotPayload\Telegram\ReplyMarkup\Model\Keyboard\KeyboardInline;
+use BotPayload\Telegram\ReplyMarkup\Model\Keyboard\KeyboardRemove;
+use BotPayload\Telegram\ReplyMarkup\Model\ReplyMarkup;
 
 class KeyboardHandle
 {

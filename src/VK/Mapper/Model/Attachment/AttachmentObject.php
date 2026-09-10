@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace BotMapperFormatter\VK\Mapper\Model\Attachment;
+namespace BotPayload\VK\Mapper\Model\Attachment;
 
 readonly class AttachmentObject
 {

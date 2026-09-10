@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace BotMapperFormatter\VK\Formatter\Enum;
+namespace BotPayload\VK\Formatter\Enum;
 
 enum ButtonType: string
 {

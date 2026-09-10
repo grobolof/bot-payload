@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace BotMapperFormatter\Telegram\ReplyMarkup\Exception;
+namespace BotPayload\Telegram\ReplyMarkup\Exception;
 
-use BotMapperFormatter\Exception\PositiveIntException as SharedPositiveIntException;
+use BotPayload\Exception\PositiveIntException as SharedPositiveIntException;
 
 class PositiveIntException extends SharedPositiveIntException
 {
