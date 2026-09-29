@@ -55,7 +55,7 @@ final class VKFormatterTest extends TestCase
         $this->assertSame(42, $payload['random_id']);
         $this->assertIsString($payload['keyboard']);
 
-        $decoded = json_decode($payload['keyboard'], true, 512, JSON_THROW_ON_ERROR);
+        $decoded = \json_decode($payload['keyboard'], true, 512, \JSON_THROW_ON_ERROR);
         $this->assertTrue($decoded['inline']);
         $this->assertSame('callback', $decoded['buttons'][0][0]['action']['type']);
     }
@@ -72,7 +72,7 @@ final class VKFormatterTest extends TestCase
         $this->assertSame('c9e90aab7b38', $payload['event_id']);
         $this->assertSame(
             '{"type":"show_snackbar","text":"Saved"}',
-            $payload['event_data']
+            $payload['event_data'],
         );
     }
 
@@ -84,7 +84,7 @@ final class VKFormatterTest extends TestCase
                 'inline' => false,
                 'buttons' => [],
             ],
-            VKFormatter::keyboardRemove()
+            VKFormatter::keyboardRemove(),
         );
     }
 }

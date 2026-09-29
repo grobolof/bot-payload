@@ -56,7 +56,7 @@ final class TelegramMapperTest extends TestCase
 
     public function testHydratesCallbackQuery(): void
     {
-        $update = TelegramMapper::exec(data: json_encode([
+        $update = TelegramMapper::exec(data: \json_encode([
             'update_id' => 99,
             'callback_query' => [
                 'id' => 'cb-1',
@@ -83,7 +83,7 @@ final class TelegramMapperTest extends TestCase
                     'text' => 'Choose',
                 ],
             ],
-        ], JSON_THROW_ON_ERROR));
+        ], \JSON_THROW_ON_ERROR));
 
         $this->assertTrue($update->isCallbackQuery());
         $this->assertSame('menu:open', $update->getCallbackData());

@@ -21,12 +21,12 @@ class TagsMismatchException extends \InvalidArgumentException
             $missingCount = $markerCloseCount - $markerOpenCount;
         }
 
-        $message = sprintf(
+        $message = \sprintf(
             'Не хватает тега "%s" в количестве: %d. Открывающих: %d, закрывающих: %d',
             $missingMarker,
             $missingCount,
             $markerOpenCount,
-            $markerCloseCount
+            $markerCloseCount,
         );
 
         parent::__construct(message: $message, code: 400);

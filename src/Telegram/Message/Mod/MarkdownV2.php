@@ -22,31 +22,31 @@ class MarkdownV2
 
         $markers = Marker::toArray();
 
-        $text = preg_replace('/[^\S\n]+/u', ' ', $text) ?? $text;
+        $text = \preg_replace('/[^\S\n]+/u', ' ', $text) ?? $text;
 
         $tmpMarkers = [];
 
         foreach ($markers as $index => $marker) {
             $tmpKey = '$$$REPLACEMENT' . $index . '$$$';
             $tmpMarkers[$tmpKey] = $marker;
-            $text = str_replace($marker, $tmpKey, $text);
+            $text = \str_replace($marker, $tmpKey, $text);
         }
 
-        $text = addcslashes(string: $text, characters: self::CHARACTERS);
+        $text = \addcslashes(string: $text, characters: self::CHARACTERS);
 
         foreach ($tmpMarkers as $tmpKey => $marker) {
-            $text = str_replace($tmpKey, $marker, $text);
+            $text = \str_replace($tmpKey, $marker, $text);
         }
 
         foreach ($markers as $marker) {
-            $text = str_replace(
+            $text = \str_replace(
                 search: $marker,
                 replace: self::markerToSymbol(marker: Marker::from(value: $marker)),
-                subject: $text
+                subject: $text,
             );
         }
 
-        return preg_replace(pattern: '/(\n+)[ \t]+/', replacement: '$1', subject: $text) ?? $text;
+        return \preg_replace(pattern: '/(\n+)[ \t]+/', replacement: '$1', subject: $text) ?? $text;
     }
 
     private static function markerToSymbol(Marker $marker): string
@@ -84,15 +84,15 @@ class MarkdownV2
         ];
 
         foreach ($markers as $marker) {
-            $markerOpenCount = substr_count(haystack: $text, needle: $marker[0]);
-            $markerCloseCount = substr_count(haystack: $text, needle: $marker[1]);
+            $markerOpenCount = \substr_count(haystack: $text, needle: $marker[0]);
+            $markerCloseCount = \substr_count(haystack: $text, needle: $marker[1]);
 
             if ($markerOpenCount !== $markerCloseCount) {
                 throw new TagsMismatchException(
                     markerOpen: $marker[0],
                     markerClose: $marker[1],
                     markerOpenCount: $markerOpenCount,
-                    markerCloseCount: $markerCloseCount
+                    markerCloseCount: $markerCloseCount,
                 );
             }
         }

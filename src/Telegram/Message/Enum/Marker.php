@@ -18,9 +18,9 @@ enum Marker: string
 
     public static function toArray(): array
     {
-        return array_map(
-            fn(self $marker) => $marker->value,
-            self::cases()
+        return \array_map(
+            static fn (self $marker) => $marker->value,
+            self::cases(),
         );
     }
 }

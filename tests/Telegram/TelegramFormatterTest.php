@@ -40,7 +40,7 @@ final class TelegramFormatterTest extends TestCase
     {
         $formatted = TelegramFormatter::message(
             mod: Mod::MARKDOWN_V2,
-            text: "Line 1\nLine 2"
+            text: "Line 1\nLine 2",
         );
 
         $this->assertSame("Line 1\nLine 2", $formatted);
@@ -52,7 +52,7 @@ final class TelegramFormatterTest extends TestCase
 
         TelegramFormatter::message(
             mod: Mod::MARKDOWN_V2,
-            text: Marker::MARKER_FONT_BOLD_OPEN->value . 'bold'
+            text: Marker::MARKER_FONT_BOLD_OPEN->value . 'bold',
         );
     }
 
@@ -81,7 +81,7 @@ final class TelegramFormatterTest extends TestCase
                 'resize_keyboard' => true,
                 'one_time_keyboard' => false,
             ],
-            $markup
+            $markup,
         );
     }
 
@@ -106,7 +106,7 @@ final class TelegramFormatterTest extends TestCase
                     ],
                 ],
             ],
-            $markup
+            $markup,
         );
     }
 
@@ -136,7 +136,7 @@ final class TelegramFormatterTest extends TestCase
         $this->assertSame('MarkdownV2', $payload['parse_mode']);
         $this->assertSame(
             ['inline_keyboard' => [[['text' => 'Ok', 'callback_data' => 'ok']]]],
-            $payload['reply_markup']
+            $payload['reply_markup'],
         );
     }
 
@@ -154,7 +154,7 @@ final class TelegramFormatterTest extends TestCase
                 'text' => 'Done',
                 'show_alert' => true,
             ],
-            $payload
+            $payload,
         );
     }
 

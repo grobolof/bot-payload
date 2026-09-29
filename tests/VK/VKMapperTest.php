@@ -60,7 +60,7 @@ final class VKMapperTest extends TestCase
 
     public function testHydratesMessageEvent(): void
     {
-        $event = VKMapper::exec(data: json_encode([
+        $event = VKMapper::exec(data: \json_encode([
             'type' => 'message_event',
             'group_id' => 161256065,
             'event_id' => '08285246239cca167e6d72d035920b5ea528c5ed',
@@ -72,7 +72,7 @@ final class VKMapperTest extends TestCase
                 'payload' => ['button' => 'bot'],
                 'conversation_message_id' => 2741,
             ],
-        ], JSON_THROW_ON_ERROR));
+        ], \JSON_THROW_ON_ERROR));
 
         $this->assertInstanceOf(MessageEvent::class, $event);
         $this->assertSame(325017603, $event->getUserId());

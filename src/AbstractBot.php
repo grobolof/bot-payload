@@ -35,13 +35,13 @@ abstract class AbstractBot
                     classMetadataFactory: $classMetadataFactory,
                     nameConverter: new MetadataAwareNameConverter(
                         metadataFactory: $classMetadataFactory,
-                        fallbackNameConverter: new CamelCaseToSnakeCaseNameConverter()
+                        fallbackNameConverter: new CamelCaseToSnakeCaseNameConverter(),
                     ),
                     propertyAccessor: new PropertyAccessor(),
-                    propertyTypeExtractor: new ReflectionExtractor()
+                    propertyTypeExtractor: new ReflectionExtractor(),
                 ),
             ],
-            encoders: [new JsonEncoder()]
+            encoders: [new JsonEncoder()],
         );
 
         return self::$serializer;
@@ -52,20 +52,20 @@ abstract class AbstractBot
      */
     protected static function decode(array|string $data): array
     {
-        if (is_array($data)) {
+        if (\is_array($data)) {
             return $data;
         }
 
         try {
-            $decoded = json_decode($data, true, 512, JSON_THROW_ON_ERROR);
+            $decoded = \json_decode($data, true, 512, \JSON_THROW_ON_ERROR);
         } catch (\JsonException $exception) {
             throw new InvalidPayloadException(
                 message: 'Некорректный JSON: ' . $exception->getMessage(),
-                previous: $exception
+                previous: $exception,
             );
         }
 
-        if (!is_array($decoded)) {
+        if (!\is_array($decoded)) {
             throw new InvalidPayloadException('Payload должен быть JSON-объектом.');
         }
 
@@ -74,8 +74,10 @@ abstract class AbstractBot
 
     /**
      * @template T of object
+     *
      * @param class-string<T> $type
      * @param array<string, mixed> $data
+     *
      * @return T
      */
     protected static function hydrate(array $data, string $type): object
@@ -87,8 +89,8 @@ abstract class AbstractBot
             return $model;
         } catch (\Throwable $exception) {
             throw new InvalidPayloadException(
-                message: sprintf('Не удалось гидратировать %s: %s', $type, $exception->getMessage()),
-                previous: $exception
+                message: \sprintf('Не удалось гидратировать %s: %s', $type, $exception->getMessage()),
+                previous: $exception,
             );
         }
     }

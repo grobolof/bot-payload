@@ -48,6 +48,6 @@ readonly class Chat
 
     public function isPrivate(): bool
     {
-        return $this->type === 'private';
+        return 'private' === $this->type;
     }
 }

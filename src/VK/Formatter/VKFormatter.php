@@ -26,18 +26,18 @@ class VKFormatter
         $payload = [
             'peer_id' => $peerId,
             'message' => $text,
-            'random_id' => $randomId ?? random_int(0, PHP_INT_MAX),
+            'random_id' => $randomId ?? \random_int(0, \PHP_INT_MAX),
         ];
 
-        if ($replyMarkup !== null) {
+        if (null !== $replyMarkup) {
             $payload['keyboard'] = self::keyboardJson(model: $replyMarkup);
         }
 
-        if ($attachment !== null) {
+        if (null !== $attachment) {
             $payload['attachment'] = $attachment;
         }
 
-        if ($replyTo !== null) {
+        if (null !== $replyTo) {
             $payload['reply_to'] = $replyTo;
         }
 
@@ -48,6 +48,7 @@ class VKFormatter
      * Parameters for messages.sendMessageEventAnswer.
      *
      * @param array<string, mixed>|null $eventData
+     *
      * @return array<string, mixed>
      */
     public static function eventAnswer(
@@ -62,8 +63,8 @@ class VKFormatter
             'peer_id' => $peerId,
         ];
 
-        if ($eventData !== null) {
-            $payload['event_data'] = json_encode($eventData, JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR);
+        if (null !== $eventData) {
+            $payload['event_data'] = \json_encode($eventData, \JSON_UNESCAPED_UNICODE | \JSON_THROW_ON_ERROR);
         }
 
         return $payload;
@@ -96,7 +97,7 @@ class VKFormatter
      */
     public static function keyboardJson(ReplyMarkup $model): string
     {
-        return json_encode(self::keyboard(model: $model), JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR);
+        return \json_encode(self::keyboard(model: $model), \JSON_UNESCAPED_UNICODE | \JSON_THROW_ON_ERROR);
     }
 
     /**
@@ -132,14 +133,14 @@ class VKFormatter
     {
         $buttonsPerRow = $model->getKeyboard()->getButtonsPerRow();
 
-        if (is_int($buttonsPerRow)) {
+        if (\is_int($buttonsPerRow)) {
             $buttons = [];
 
             foreach ($model->getButtons() as $button) {
                 $buttons[] = self::button(button: $button);
             }
 
-            return array_chunk($buttons, $buttonsPerRow);
+            return \array_chunk($buttons, $buttonsPerRow);
         }
 
         $lines = [];
@@ -148,9 +149,9 @@ class VKFormatter
             $lines[$button->getRow()][] = self::button(button: $button);
         }
 
-        ksort($lines);
+        \ksort($lines);
 
-        return array_values($lines);
+        return \array_values($lines);
     }
 
     /**
@@ -162,37 +163,37 @@ class VKFormatter
             'type' => $button->getType()->value,
         ];
 
-        if ($button->getType() !== ButtonType::LOCATION) {
+        if (ButtonType::LOCATION !== $button->getType()) {
             $action['label'] = $button->getLabel();
         }
 
         $payload = $button->getPayload();
-        if ($payload !== null) {
-            $action['payload'] = is_string($payload)
+        if (null !== $payload) {
+            $action['payload'] = \is_string($payload)
                 ? $payload
-                : json_encode($payload, JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR);
+                : \json_encode($payload, \JSON_UNESCAPED_UNICODE | \JSON_THROW_ON_ERROR);
         }
 
-        if ($button->getType() === ButtonType::OPEN_LINK) {
-            if ($button->getLink() === null) {
+        if (ButtonType::OPEN_LINK === $button->getType()) {
+            if (null === $button->getLink()) {
                 throw new \InvalidArgumentException('Кнопка open_link должна содержать link.');
             }
 
             $action['link'] = $button->getLink();
         }
 
-        if ($button->getType() === ButtonType::OPEN_APP) {
-            if ($button->getAppId() === null) {
+        if (ButtonType::OPEN_APP === $button->getType()) {
+            if (null === $button->getAppId()) {
                 throw new \InvalidArgumentException('Кнопка open_app должна содержать app_id.');
             }
 
             $action['app_id'] = $button->getAppId();
 
-            if ($button->getOwnerId() !== null) {
+            if (null !== $button->getOwnerId()) {
                 $action['owner_id'] = $button->getOwnerId();
             }
 
-            if ($button->getHash() !== null) {
+            if (null !== $button->getHash()) {
                 $action['hash'] = $button->getHash();
             }
         }
@@ -201,7 +202,7 @@ class VKFormatter
             'action' => $action,
         ];
 
-        if (in_array($button->getType(), [ButtonType::TEXT, ButtonType::CALLBACK], true)) {
+        if (\in_array($button->getType(), [ButtonType::TEXT, ButtonType::CALLBACK], true)) {
             $item['color'] = $button->getColor()->value;
         }
 

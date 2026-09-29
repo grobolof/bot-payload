@@ -20,10 +20,10 @@ readonly class Keyboard implements KeyboardInterface
         private bool $selective = false,
         private ?string $inputFieldPlaceholder = null,
     ) {
-        if (is_int($buttonsPerRow) && $buttonsPerRow < 1) {
+        if (\is_int($buttonsPerRow) && $buttonsPerRow < 1) {
             throw new PositiveIntException(
                 number: $buttonsPerRow,
-                message: 'Количество кнопок в ряду должно быть больше 0. Ваше количество кнопок в ряду: %d'
+                message: 'Количество кнопок в ряду должно быть больше 0. Ваше количество кнопок в ряду: %d',
             );
         }
     }

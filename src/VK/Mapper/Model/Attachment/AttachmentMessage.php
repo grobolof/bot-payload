@@ -111,12 +111,12 @@ readonly class AttachmentMessage
 
     public function getPayload(): mixed
     {
-        if ($this->payload === null || $this->payload === '') {
+        if (null === $this->payload || '' === $this->payload) {
             return null;
         }
 
         try {
-            return json_decode($this->payload, true, 512, JSON_THROW_ON_ERROR);
+            return \json_decode($this->payload, true, 512, \JSON_THROW_ON_ERROR);
         } catch (\JsonException) {
             return $this->payload;
         }

@@ -27,7 +27,7 @@ readonly class Button
         if ($row < 1) {
             throw new PositiveIntException(
                 number: $row,
-                message: 'Номер строки должен быть больше 0. Ваш номер строки: %d'
+                message: 'Номер строки должен быть больше 0. Ваш номер строки: %d',
             );
         }
     }

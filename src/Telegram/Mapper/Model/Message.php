@@ -153,11 +153,11 @@ readonly class Message
     public function getBotCommand(): ?string
     {
         $text = $this->text;
-        if ($text === null || !str_starts_with($text, '/')) {
+        if (null === $text || !\str_starts_with($text, '/')) {
             return null;
         }
 
-        if (preg_match('/^\/([a-zA-Z0-9_]+)/', $text, $matches) !== 1) {
+        if (1 !== \preg_match('/^\/([a-zA-Z0-9_]+)/', $text, $matches)) {
             return null;
         }
 

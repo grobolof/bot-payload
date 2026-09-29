@@ -38,26 +38,26 @@ readonly class TelegramUpdate implements TelegramMapperInterface
 
     public function isMessage(): bool
     {
-        return $this->message !== null;
+        return null !== $this->message;
     }
 
     public function isEditedMessage(): bool
     {
-        return $this->editedMessage !== null;
+        return null !== $this->editedMessage;
     }
 
     public function isCallbackQuery(): bool
     {
-        return $this->callbackQuery !== null;
+        return null !== $this->callbackQuery;
     }
 
     public function getChatId(): ?int
     {
-        if ($this->message !== null) {
+        if (null !== $this->message) {
             return $this->message->getChat()->getId();
         }
 
-        if ($this->editedMessage !== null) {
+        if (null !== $this->editedMessage) {
             return $this->editedMessage->getChat()->getId();
         }
 

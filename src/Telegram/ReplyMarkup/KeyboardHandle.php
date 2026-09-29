@@ -17,13 +17,13 @@ class KeyboardHandle
      */
     public static function keyboard(
         ReplyMarkup $replyMarkupModel,
-        Keyboard $keyboard
+        Keyboard $keyboard,
     ): array {
         $payload = [
             'keyboard' => self::rows(
                 replyMarkupModel: $replyMarkupModel,
                 buttonsPerRow: $keyboard->getButtonsPerRow(),
-                mapButton: self::replyKeyboardButton(...)
+                mapButton: self::replyKeyboardButton(...),
             ),
             'resize_keyboard' => $keyboard->getResizeKeyboard(),
             'one_time_keyboard' => $keyboard->getOneTimeKeyboard(),
@@ -37,7 +37,7 @@ class KeyboardHandle
             $payload['selective'] = true;
         }
 
-        if ($keyboard->getInputFieldPlaceholder() !== null) {
+        if (null !== $keyboard->getInputFieldPlaceholder()) {
             $payload['input_field_placeholder'] = $keyboard->getInputFieldPlaceholder();
         }
 
@@ -49,13 +49,13 @@ class KeyboardHandle
      */
     public static function keyboardInline(
         ReplyMarkup $replyMarkupModel,
-        KeyboardInline $keyboard
+        KeyboardInline $keyboard,
     ): array {
         return [
             'inline_keyboard' => self::rows(
                 replyMarkupModel: $replyMarkupModel,
                 buttonsPerRow: $keyboard->getButtonsPerRow(),
-                mapButton: self::inlineKeyboardButton(...)
+                mapButton: self::inlineKeyboardButton(...),
             ),
         ];
     }
@@ -109,15 +109,15 @@ class KeyboardHandle
         $url = $button->getUrl();
         $callbackData = $button->getCallbackData();
 
-        if ($switchInlineQuery !== null) {
+        if (null !== $switchInlineQuery) {
             $payload['switch_inline_query'] = $switchInlineQuery;
-        } elseif ($url !== null && $url !== '') {
+        } elseif (null !== $url && '' !== $url) {
             $payload['url'] = $url;
-        } elseif ($callbackData !== null && $callbackData !== '') {
+        } elseif (null !== $callbackData && '' !== $callbackData) {
             $payload['callback_data'] = $callbackData;
         } else {
             throw new \InvalidArgumentException(
-                'Inline-кнопка должна содержать callback_data, url или switch_inline_query.'
+                'Inline-кнопка должна содержать callback_data, url или switch_inline_query.',
             );
         }
 
@@ -126,6 +126,7 @@ class KeyboardHandle
 
     /**
      * @param callable(Button): array<string, mixed> $mapButton
+     *
      * @return list<list<array<string, mixed>>>
      */
     private static function rows(
@@ -133,14 +134,14 @@ class KeyboardHandle
         ?int $buttonsPerRow,
         callable $mapButton,
     ): array {
-        if (is_int($buttonsPerRow)) {
+        if (\is_int($buttonsPerRow)) {
             $buttons = [];
 
             foreach ($replyMarkupModel->getButtons() as $button) {
                 $buttons[] = $mapButton($button);
             }
 
-            return array_chunk($buttons, $buttonsPerRow);
+            return \array_chunk($buttons, $buttonsPerRow);
         }
 
         $lines = [];
@@ -149,8 +150,8 @@ class KeyboardHandle
             $lines[$button->getRow()][] = $mapButton($button);
         }
 
-        ksort($lines);
+        \ksort($lines);
 
-        return array_values($lines);
+        return \array_values($lines);
     }
 }

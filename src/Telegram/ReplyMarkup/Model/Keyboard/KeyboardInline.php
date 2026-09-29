@@ -8,19 +8,19 @@ use BotPayload\Telegram\ReplyMarkup\Contract\KeyboardInterface;
 use BotPayload\Telegram\ReplyMarkup\Exception\PositiveIntException;
 
 /**
- * Клавиатура в сообщении
+ * Клавиатура в сообщении.
  *
- * @property-read int|null $buttonsPerRow кол-во кнопок в ряду (имеет приоритет над рядами кнопок; опционально)
+ * @property int|null $buttonsPerRow кол-во кнопок в ряду (имеет приоритет над рядами кнопок; опционально)
  */
 readonly class KeyboardInline implements KeyboardInterface
 {
     public function __construct(
         private ?int $buttonsPerRow = null,
     ) {
-        if (is_int($buttonsPerRow) && $buttonsPerRow < 1) {
+        if (\is_int($buttonsPerRow) && $buttonsPerRow < 1) {
             throw new PositiveIntException(
                 number: $buttonsPerRow,
-                message: 'Количество кнопок в ряду должно быть больше 0. Ваше количество кнопок в ряду: %d'
+                message: 'Количество кнопок в ряду должно быть больше 0. Ваше количество кнопок в ряду: %d',
             );
         }
     }
